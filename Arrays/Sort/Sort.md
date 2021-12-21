@@ -96,14 +96,39 @@ Pseudocode:
 
 ## Countsort
 
-Countsort is a bit different, it looks at the digits of the inputs, buckets them and sorts according to those buckets.  Then it moves to the next digit.  This works on the same sort of divide and conquer process, but is based on the number of digits in the input.
+Countsort is a bit different, it works best if the range of the inputs is small.  It creates a count array of unique values, which keep track of when a value in the sorted array should change, and then writes those based on count to an output array.
 
 Average runtime: O(n+k), n is the size of the array and k is the range of values of the array.
 It does also use extra space because there's another array made, that which keeps track of the digits.
 
 Pseudocode:
 
-    Countingsort(int[] input){
-        
-        for(int i = 0; i < )
+    Countingsort(int[] input, int range, int len){
+
+        int i, j = 0;
+        int count[range + 1];
+        int output[len];
+
+        //Initialize the count array
+        for(; i <= range; i++){
+            count[i] = 0;
+        }
+        //Store count of elements
+        for(; j< len; j++){
+            count[input[j]] = count[input[j]] + 1;
+        }
+
+        //Shift the count to the actual positions
+
+        for(i = 1; i < range+1; i++){
+            count[i] = count[i] + count[i-1];
+        }
+
+        //Now we have the number of inflection points of the array, and how many elements are in each bucket.
+
+        //Time to make the output
+        for(j = len - 1; j >= 0; j--){
+            output[count[input[j]]-1] = input[j];
+            count[input[j]] = count[input[j]] - 1;
+        }
     }
