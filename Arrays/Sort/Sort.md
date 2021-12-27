@@ -96,7 +96,7 @@ Pseudocode:
 
 ## Countsort
 
-Countsort is a bit different, it works best if the range of the inputs is small.  It creates a count array of unique values, which keep track of when a value in the sorted array should change, and then writes those based on count to an output array.
+Countsort is a bit different, it works best if the range of the inputs is small.  It creates a count array of values, which keep track of when a value in the sorted array should change, and then writes those based on count to an output array.  By incrementing the original value as the index of the count array, you get the number of that value's incidents.  And then by taking the count array and making a running sum of incidents you get the correct index in the sorted array.
 
 Average runtime: O(n+k), n is the size of the array and k is the range of values of the array.
 It does also use extra space because there's another array made, that which keeps track of the digits.
