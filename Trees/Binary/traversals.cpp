@@ -90,9 +90,9 @@ int main(){
 	std::cout << arr[row_size - 1] << "\n";
 
 	node *root = create_tree(arr, row_size, 0);
-	std::cout << "infix" << "\n";
-	traverse(root, 3, 0);
 	std::cout << "prefix" << "\n";
+	traverse(root, 3, 0);
+	std::cout << "infix" << "\n";
 	traverse(root, 3, 1);
         std::cout << "postfix" << "\n";
 	traverse(root, 3, 2);
