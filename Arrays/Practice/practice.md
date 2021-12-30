@@ -50,3 +50,4 @@ if(arr[unique] != arr[len - 1]){
 And finally we just can get rid of the rest of the array
 return(arr[0:unique]);
 
+## 
